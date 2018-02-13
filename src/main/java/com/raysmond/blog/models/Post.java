@@ -3,16 +3,14 @@ package com.raysmond.blog.models;
 import com.raysmond.blog.models.support.PostFormat;
 import com.raysmond.blog.models.support.PostStatus;
 import com.raysmond.blog.models.support.PostType;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
@@ -74,16 +72,105 @@ public class Post extends BaseModel {
         return views == null ? 0 : views;
     }
 
-    public String getRenderedContent() {
-        if (this.postFormat == PostFormat.MARKDOWN) {
-            return renderedContent;
-        }
-
-        return getContent();
-    }
+//    public String getRenderedContent() {
+//        if (this.postFormat == PostFormat.MARKDOWN) {
+//            return renderedContent;
+//        }
+//
+//        return getContent();
+//    }
 
     public void setPermalink(String permalink) {
         String token = permalink.toLowerCase().replace("\n", " ").replaceAll("[^a-z\\d\\s]", " ");
         this.permalink = StringUtils.arrayToDelimitedString(StringUtils.tokenizeToStringArray(token, " "), "-");
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getRenderedContent() {
+        return renderedContent;
+    }
+
+    public void setRenderedContent(String renderedContent) {
+        this.renderedContent = renderedContent;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getRenderedSummary() {
+        return renderedSummary;
+    }
+
+    public void setRenderedSummary(String renderedSummary) {
+        this.renderedSummary = renderedSummary;
+    }
+
+    public PostStatus getPostStatus() {
+        return postStatus;
+    }
+
+    public void setPostStatus(PostStatus postStatus) {
+        this.postStatus = postStatus;
+    }
+
+    public PostFormat getPostFormat() {
+        return postFormat;
+    }
+
+    public void setPostFormat(PostFormat postFormat) {
+        this.postFormat = postFormat;
+    }
+
+    public PostType getPostType() {
+        return postType;
+    }
+
+    public void setPostType(PostType postType) {
+        this.postType = postType;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public String getPermalink() {
+        return permalink;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
     }
 }

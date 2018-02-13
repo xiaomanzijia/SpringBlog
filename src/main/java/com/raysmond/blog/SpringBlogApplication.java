@@ -3,7 +3,6 @@ package com.raysmond.blog;
 import com.google.common.collect.ImmutableMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 
 
 @SpringBootApplication

@@ -35,10 +35,8 @@ public class CacheSettingService implements SettingService {
         try {
             value = setting == null ? null : setting.getValue();
         } catch (Exception ex) {
-            log.info("Cannot deserialize setting value with key = " + key);
         }
 
-        log.info("Get setting " + key + " from database. Value = " + value);
 
         return value;
     }
@@ -53,7 +51,6 @@ public class CacheSettingService implements SettingService {
     @Override
     @CacheEvict(value = "settingCache", key = "#key")
     public void put(String key, Serializable value) {
-        log.info("Update setting " + key + " to database. Value = " + value);
 
         Setting setting = settingRepository.findByKey(key);
         if (setting == null) {
@@ -65,7 +62,6 @@ public class CacheSettingService implements SettingService {
             settingRepository.save(setting);
         } catch (Exception ex) {
 
-            log.info("Cannot save setting value with type: " + value.getClass() + ". key = " + key);
         }
     }
 }

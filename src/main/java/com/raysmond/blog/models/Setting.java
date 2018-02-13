@@ -1,7 +1,5 @@
 package com.raysmond.blog.models;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +7,8 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
@@ -29,4 +29,19 @@ public class Setting extends BaseModel {
     @Column(name = "_value")
     private Serializable value;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Serializable getValue() {
+        return value;
+    }
+
+    public void setValue(Serializable value) {
+        this.value = value;
+    }
 }

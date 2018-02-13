@@ -50,7 +50,6 @@ public class PostService {
     private MarkdownService markdownService;
 
     public Post getPost(Long postId) {
-        log.debug("Get post " + postId);
 
         Post post = postRepository.findOne(postId);
 
@@ -62,7 +61,6 @@ public class PostService {
     }
 
     public Post getPublishedPostByPermalink(String permalink) {
-        log.debug("Get post with permalink " + permalink);
 
         Post post = postRepository.findByPermalinkAndPostStatus(permalink, PostStatus.PUBLISHED);
 
@@ -104,7 +102,6 @@ public class PostService {
     }
 
     public List<Post> getArchivePosts() {
-        log.debug("Get all archive posts from database.");
 
         Pageable page = new PageRequest(0, Integer.MAX_VALUE, Sort.Direction.DESC, "createdAt");
         return postRepository.findAllByPostTypeAndPostStatus(PostType.POST, PostStatus.PUBLISHED, page)
@@ -115,7 +112,6 @@ public class PostService {
     }
 
     public List<Tag> getPostTags(Post post) {
-        log.debug("Get tags of post {}", post.getId());
 
         List<Tag> tags = new ArrayList<>();
 
@@ -137,7 +133,6 @@ public class PostService {
     }
 
     public Page<Post> getAllPublishedPostsByPage(int page, int pageSize) {
-        log.debug("Get posts by page " + page);
 
         return postRepository.findAllByPostTypeAndPostStatus(
                 PostType.POST,
@@ -146,7 +141,6 @@ public class PostService {
     }
 
     public Post createAboutPage() {
-        log.debug("Create default about page");
 
         Post post = new Post();
         post.setTitle(Constants.ABOUT_PAGE_PERMALINK);
@@ -190,7 +184,6 @@ public class PostService {
     }
 
     public List<Object[]> countPostsByTags() {
-        log.debug("Count posts group by tags.");
 
         return postRepository.countPostsByTags(PostStatus.PUBLISHED);
     }
