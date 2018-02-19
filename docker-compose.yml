@@ -5,7 +5,7 @@ services:
       environment:
         - MYSQL_USER=root
         - MYSQL_DATABASE=spring_blog_prod
-        - MYSQL_ROOT_PASSWORD=123456
+        - MYSQL_ROOT_PASSWORD=Aliyun18@Better
     webapp:
       image: java:8
       depends_on:

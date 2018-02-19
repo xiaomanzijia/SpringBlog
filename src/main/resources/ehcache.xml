@@ -67,6 +67,90 @@
         <persistence strategy="localTempSwap"/>
     </cache>
 
+    <cache name="orderDetailCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache name="orderModelCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache name="goodCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache name="orderLogisticsCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache name="orderReturnsCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache name="deliveryAddressCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache name="shoppingCartCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="30"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
     <cache name="org.hibernate.cache.internal.StandardQueryCache"
            maxEntriesLocalHeap="5" eternal="false" timeToLiveSeconds="120">
         <persistence strategy="localTempSwap"/>

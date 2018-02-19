@@ -4,18 +4,20 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.raysmond.blog.error.NotFoundException;
 import com.raysmond.blog.models.Post;
+import com.raysmond.blog.models.User;
 import com.raysmond.blog.models.support.PostType;
 import com.raysmond.blog.services.PostService;
 
+import com.raysmond.blog.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,17 +29,36 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+    @ResponseBody
+    @RequestMapping(value = "getUserTest")
+    public String getUser() throws Exception {
+        List<User> users = new ArrayList<>();
+        users.set(0, new User("823354103@qq.com", "licheng", "admin"));
+        return JsonUtils.obj2json(users);
+    }
+
     @GetMapping(value = "posts/archive")
+    @ResponseBody
     public String archive(Model model) {
-        Map<Integer, List<Post>> posts = Maps.newHashMap();
-        postService.getArchivePosts().forEach(post -> {
-            if (!posts.containsKey(post.getCreatedAt().getYear())) {
-                posts.put(post.getCreatedAt().getYear(), Lists.newArrayList());
-            }
-            posts.get(post.getCreatedAt().getYear()).add(post);
-        });
-        model.addAttribute("posts", posts);
-        return "posts/archive";
+//        Map<Integer, List<Post>> posts = Maps.newHashMap();
+//        postService.getArchivePosts().forEach(post -> {
+//            if (!posts.containsKey(post.getCreatedAt().getYear())) {
+//                posts.put(post.getCreatedAt().getYear(), Lists.newArrayList());
+//            }
+//            posts.get(post.getCreatedAt().getYear()).add(post);
+//        });
+//        model.addAttribute("posts", posts);
+//        return "posts/archive";
+//        return "sfdsfsdf";
+//        List<User> users = new ArrayList<>();
+//        users.set(0, new User("823354103@qq.com", "licheng", "admin"));
+//        try {
+//            return JsonUtils.obj2json(users);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return e.toString();
+//        }
+        return "fesgdsgs";
     }
 
     @GetMapping(value = "posts/{permalink}")

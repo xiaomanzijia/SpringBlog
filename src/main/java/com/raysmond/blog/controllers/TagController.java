@@ -52,7 +52,6 @@ public class TagController {
         model.addAttribute("posts", posts);
         model.addAttribute("page", page + 1);
         model.addAttribute("totalPages", posts.getTotalPages());
-
         return "tags/show";
     }
 }
