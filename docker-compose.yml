@@ -15,7 +15,7 @@ services:
         - ./application-prod.yml:/app/application-prod.yml
         - ./build/libs/SpringBlog-0.0.1-SNAPSHOT.jar:/app/app.jar
       ports:
-        - "9000:8080"
+        - "80:8080"
 #      command: "java -jar /app/app.jar --spring.profiles.active=prod --spring.config.location=/app/application-prod.yml"
       command: "java -jar /app/app.jar --spring.profiles.active=prod"
 
