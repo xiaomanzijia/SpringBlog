@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 @RestController
@@ -29,8 +30,13 @@ public class WeixinController {
             HttpServletRequest request,
             HttpServletResponse response) throws IOException {
 
+        response.reset();
         request.setCharacterEncoding("UTF-8");  //微信服务器POST消息时用的是UTF-8编码，在接收时也要用同样的编码，否则中文会乱码
         response.setCharacterEncoding("UTF-8"); //在响应消息（回复消息给用户）时，也将编码方式设置为UTF-8，原理同上
+
+        PrintWriter out = response.getWriter();
+
+
         boolean isGet = request.getMethod().toLowerCase().equals("get");
 
         try {
@@ -41,17 +47,19 @@ public class WeixinController {
                 String sign = DigestUtils.shaHex(value);
 
                 if (signature.equals(sign)) {// 验证成功返回ehcostr
-                    response.getWriter().write(echostr);
+                    out.write(echostr);
+                    out.flush();
                 }
 
             } else {
                 String respMessage = weChatService.weixinPost(request);
-                response.getWriter().write(respMessage);
+                out.write(respMessage);
+                out.flush();
             }
         } catch (Exception e) {
-
+            out.flush();
         } finally {
-            response.getWriter().close();
+            out.close();
         }
 
     }
