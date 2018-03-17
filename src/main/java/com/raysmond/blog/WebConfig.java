@@ -1,7 +1,7 @@
 package com.raysmond.blog;
 
 import com.raysmond.blog.support.web.ViewHelper;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import static com.raysmond.blog.Constants.ENV_DEVELOPMENT;
 import static com.raysmond.blog.Constants.ENV_PRODUCTION;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Raysmond .
@@ -66,13 +64,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
                     throws Exception {
                 viewHelper.setStartTime(System.currentTimeMillis());
-
                 return true;
             }
 
             @Override
             public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                                    ModelAndView view) {
+
                 CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
                 if (token != null) {
                     view.addObject(token.getParameterName(), token);

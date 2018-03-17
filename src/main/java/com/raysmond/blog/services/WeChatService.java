@@ -13,7 +13,6 @@ import java.util.Map;
 
 @Service
 @Slf4j
-@Transactional
 public class WeChatService {
 
     public String weixinPost(HttpServletRequest request) {
@@ -32,12 +31,15 @@ public class WeChatService {
             // 消息内容
             String content = requestMap.get("Content");
 
+            System.out.println("=============================" + requestMap.get("Content"));
+
+
 //            LOGGER.info("FromUserName is:" + fromUserName + ", ToUserName is:" + toUserName + ", MsgType is:" + msgType);
 
             // 文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
                 //这里根据关键字执行相应的逻辑，只有你想不到的，没有做不到的
-                if(content.equals("xxx")){
+                if (content.equals("xxx")) {
 
                 }
 
@@ -119,8 +121,7 @@ public class WeChatService {
                     }
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Logger.getLogger("error......");
         }
         return respMessage;
